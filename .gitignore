@@ -131,3 +131,8 @@ dist
 
 # Replit debugger
 .breakpoints
+
+.replit
+replit.nix
+node_modules
+package-lock.json

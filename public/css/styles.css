@@ -1,0 +1,279 @@
+:root {
+    /* Light Mode Colors (Creamy White) */
+    --bg-light: #FAF9F6; /* Creamy white background */
+    --surface-light: #FFFEFC; /* Slightly off-white for surfaces */
+    --primary-light: #1A73E8; /* Google blue */
+    --secondary-light: #34A853; /* Google green */
+    --text-primary-light: #2D2D2D; /* Dark gray for text */
+    --text-secondary-light: #5F6368; /* Medium gray for secondary text */
+    --error-light: #D93025; /* Google red */
+
+    /* Dark Mode Colors (No changes) */
+    --bg-dark: #202124;
+    --surface-dark: #2D2E30;
+    --primary-dark: #8AB4F8;
+    --secondary-dark: #81C995;
+    --text-primary-dark: #E8EAED;
+    --text-secondary-dark: #9AA0A6;
+    --error-dark: #F28B82;
+}
+
+/* Apply colors based on device theme */
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: var(--bg-light);
+        --surface: var(--surface-light);
+        --primary: var(--primary-light);
+        --secondary: var(--secondary-light);
+        --text-primary: var(--text-primary-light);
+        --text-secondary: var(--text-secondary-light);
+        --error: var(--error-light);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: var(--bg-dark);
+        --surface: var(--surface-dark);
+        --primary: var(--primary-dark);
+        --secondary: var(--secondary-dark);
+        --text-primary: var(--text-primary-dark);
+        --text-secondary: var(--text-secondary-dark);
+        --error: var(--error-dark);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    background-color: var(--surface);
+    padding: 16px 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+.app-name {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+/* Main Content */
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.password-generator {
+    background-color: var(--surface);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.password-display {
+    display: flex;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--bg);
+    border: 1px solid var(--text-secondary);
+}
+
+#password-output {
+    flex-grow: 1;
+    padding: 12px;
+    background-color: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 16px;
+    outline: none;
+}
+
+#copy-btn {
+    background-color: var(--primary);
+    color: var(--bg);
+    border: none;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#copy-btn:hover {
+    background-color: var(--secondary);
+}
+
+.password-strength {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.options {
+    background-color: var(--bg);
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--text-secondary);
+}
+
+.length-control {
+    margin-bottom: 16px;
+}
+
+.length-control label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+#length {
+    width: 100%;
+    accent-color: var(--primary);
+}
+
+.character-types h3 {
+    color: var(--primary);
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--bg);
+}
+
+#generate-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary);
+    color: var(--bg);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+#generate-btn:hover {
+    background-color: var(--secondary);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .password-generator {
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    #password-output {
+        font-size: 14px;
+    }
+
+    .options {
+        padding: 12px;
+    }
+
+    .character-types h3 {
+        font-size: 14px;
+    }
+
+    .checkbox-group label {
+        font-size: 12px;
+    }
+
+    #generate-btn {
+        font-size: 14px;
+    }
+}
